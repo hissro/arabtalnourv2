@@ -25,7 +25,12 @@
         <div class="sidebar-brand-icon rotate-n-0">
           <i class="fas fa-user"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"><?php  echo $this->session->userdata('name') .'<br>'. $this->session->userdata('role'); ?></div>
+        
+        <?php 
+        $session = session(); 
+        $roleId  = $session->get('roleId') ;
+        ?>
+        <div class="sidebar-brand-text mx-3"><?php  echo $session->get('name') .'<br>'. $session->get('role'); ?></div>
       </a>
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -52,13 +57,13 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"> قائمة  </h6>
-            <a class="collapse-item" href="<?php echo base_url("dashboard") ?>">  الرئيسية   </a>
+            <a class="collapse-item" href="<?php echo base_url("/") ?>">  الرئيسية   </a>
 
-            <?php if (  $this->session->userdata('roleId')  == 3 ||  $this->session->userdata('roleId')  == 4 || $this->session->userdata('roleId')  == 5 ||  $this->session->userdata('roleId')  == 6   ) {?>
+            <?php if (  $roleId  == 3 ||  $roleId == 4 || $roleId  == 5 ||  $roleId  == 6   ) {?>
             <a class="collapse-item" href="<?php echo base_url("all_request") ?>">  كل الطلبات   </a>
             <?php } ?>
             
-            <?php if (    $this->session->userdata('roleId')  == 1  ){?>
+            <?php if (   $roleId  == 1  ){?>
             <a class="collapse-item" href="<?php echo base_url("users") ?>">المستخدمين</a>
             <?php } ?>
 
@@ -69,7 +74,7 @@
       </li>
 
 
-      <?php  if ( $this->session->userdata('roleId') == 2 ) { ?> 
+      <?php  if ( $roleId == 2 ) { ?> 
       <!-- Nav Item - Data Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -78,7 +83,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header"> قائمة <?php echo $this->session->userdata('role'); ?> </h6>
+            <h6 class="collapse-header"> قائمة <?php echo $session->get('role'); ?> </h6>
             <a class="collapse-item" href="<?php echo base_url("new_request") ?>">  طلب جديد</a>
           </div>
         </div>
@@ -180,7 +185,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('username'); ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $session->get('username'); ?></span>
                 <img class="img-profile rounded-circle" src="<?php echo base_url('assets/user.png'); ?>">
               </a>
               <!-- Dropdown - User Information -->

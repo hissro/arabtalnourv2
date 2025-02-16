@@ -40,7 +40,7 @@
         <div class="modal-body">قم بتحديد "تسجيل الخروج" أدناه إذا كنت مستعدًا لإنهاء جلستك الحالية.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">إلغاء</button>
-          <a class="btn btn-primary" href="<?php echo base_url('login/logout'); ?>">خروج</a>
+          <a class="btn btn-primary" href="<?php echo base_url('/logout'); ?>">خروج</a>
         </div>
       </div>
     </div>
